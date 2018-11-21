@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.riddhi.service</groupId>
-	<artifactId>ccy-conversion-service</artifactId>
+	<groupId>com.riddhi.server</groupId>
+	<artifactId>boot-eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ccy-conversion-service</name>
+	<name>boot-eureka-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -23,7 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-boot-admin.version>2.1.1</spring-boot-admin.version>
-		<swagger.version>2.9.2</swagger.version>
+		<spring-cloud.version>Greenwich.M3</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -36,37 +36,8 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-feign</artifactId>
-		    <version>1.4.6.RELEASE</version>
-		</dependency>
-		
-		<!-- Swagger dependencies -->
-		<dependency>
-		    <groupId>io.springfox</groupId>
-		    <artifactId>springfox-swagger2</artifactId>
-		    <version>${swagger.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>io.springfox</groupId>
-    		<artifactId>springfox-swagger-ui</artifactId>
-		    <version>${swagger.version}</version>
-		</dependency>
-		
-		<!-- Lombok dependency -->
-		<dependency>
-		    <groupId>org.projectlombok</groupId>
-		    <artifactId>lombok</artifactId>
-		    <version>1.16.20</version>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 
 		<dependency>
@@ -79,16 +50,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>de.codecentric</groupId>
-				<artifactId>spring-boot-admin-dependencies</artifactId>
-				<version>${spring-boot-admin.version}</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.SR2</version>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -105,14 +76,15 @@
 	</build>
 
 	<repositories>
-	    <repository>
-	        <id>spring-milestones</id>
-	        <name>Spring Milestones</name>
-	        <url>https://repo.spring.io/libs-milestone</url>
-	        <snapshots>
-	            <enabled>false</enabled>
-	        </snapshots>
-	    </repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
-	
+
+
 </project>

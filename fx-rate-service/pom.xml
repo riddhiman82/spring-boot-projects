@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.riddhi.service</groupId>
-	<artifactId>ccy-conversion-service</artifactId>
+	<artifactId>fx-rate-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>ccy-conversion-service</name>
+	<name>fx-rate-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<spring-boot-admin.version>2.1.1</spring-boot-admin.version>
+		<spring-cloud.version>Greenwich.M3</spring-cloud.version>
 		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
@@ -42,12 +43,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-feign</artifactId>
-		    <version>1.4.6.RELEASE</version>
 		</dependency>
 		
 		<!-- Swagger dependencies -->
@@ -79,16 +74,16 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>de.codecentric</groupId>
-				<artifactId>spring-boot-admin-dependencies</artifactId>
-				<version>${spring-boot-admin.version}</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Finchley.SR2</version>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-dependencies</artifactId>
+				<version>${spring-boot-admin.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -105,14 +100,15 @@
 	</build>
 
 	<repositories>
-	    <repository>
-	        <id>spring-milestones</id>
-	        <name>Spring Milestones</name>
-	        <url>https://repo.spring.io/libs-milestone</url>
-	        <snapshots>
-	            <enabled>false</enabled>
-	        </snapshots>
-	    </repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
-	
+
+
 </project>

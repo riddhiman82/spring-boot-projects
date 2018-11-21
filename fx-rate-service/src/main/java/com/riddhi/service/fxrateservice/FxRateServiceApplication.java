@@ -1,9 +1,7 @@
-package com.riddhi.service.ccyconversionservice;
+package com.riddhi.service.fxrateservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -12,11 +10,18 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
-public class CcyConversionServiceApplication {
+@EnableSwagger2
+public class FxRateServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CcyConversionServiceApplication.class, args);
+		SpringApplication.run(FxRateServiceApplication.class, args);
+	}
+	
+	@Bean
+	public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.riddhi.service.fxrateservice.controller"))
+				.build();
 	}
 }

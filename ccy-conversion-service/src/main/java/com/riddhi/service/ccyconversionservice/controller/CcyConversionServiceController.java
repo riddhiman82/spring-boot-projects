@@ -1,5 +1,7 @@
 package com.riddhi.service.ccyconversionservice.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,21 +10,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riddhi.service.ccyconversionservice.model.FxRate;
-import com.riddhi.service.ccyconversionservice.service.FxRateService;
+import com.riddhi.service.ccyconversionservice.model.CcyExchangeModel;
+import com.riddhi.service.ccyconversionservice.service.CcyConversionService;
 
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/fx-rate")
+@RequestMapping("/convert")
 @AllArgsConstructor
 public class CcyConversionServiceController {
 	
-	private FxRateService fxRateService;
+	private CcyConversionService ccyService;
 	
-	@GetMapping(path = "/rate-only")
+	@GetMapping(path = "/conversion-info")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody FxRate getFxRate(@RequestParam("fromCcy") String fromCcy, @RequestParam("toCcy") String toCcy) {
-		return fxRateService.getFxRate(fromCcy, toCcy);
+	public @ResponseBody CcyExchangeModel getConvertionInformation(@RequestParam("fromCcy") String fromCcy, @RequestParam("toCcy") String toCcy, @RequestParam("amount") BigDecimal amount) {
+		return ccyService.convertCurrency(fromCcy, toCcy, amount);
 	}
 }
